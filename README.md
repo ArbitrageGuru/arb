@@ -1,6 +1,6 @@
 # ArbitrageGuru
 
-A simple, efficient platform for Solana memecoin arbitrage between Raydium and Jupiter. Built with vanilla HTML, CSS, and JavaScript for maximum accessibility and ease of contribution.
+A simple, efficient platform for Solana memecoin arbitrage between Raydium and Jupiter. Built with vanilla HTML, CSS, and JavaScript for maximum accessibility and ease of contribution. Currently only supporting Solflare wallet. 
 
 ## Overview
 
