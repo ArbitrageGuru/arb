@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <!-- Make it mobile-responsive -->
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ArbitrageGuru</title>
-  <meta name="description" content="Solana Memcoin Arbitrage Platform Made EASY! Become an Arbitrage Guru today! Devs, contribute to the project on GitHub. Free, Open Source Platform for the Solana Ecosystem.">
-  <meta name="application-name" content="ArbitrageGuru">
+  
+  <!-- Remove any COOP/COEP meta tags -->
+  <!-- Add only essential meta tags -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="referrer" content="no-referrer">
+  
   <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
+
 <body>
   <!-- Updated Popup HTML -->
   <div class="popup-overlay" id="welcomePopup">
-    <div class="popup-content">
+    <div class="popup-content" style="margin-top: 100px;">
         <h2>ARB.GURU</h2>
         
         <p style="font-size: 1.4rem; font-weight: 600; background: linear-gradient(135deg, #5D3AC9, #3A84FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin: 2rem 0;">
             WE MAKE ARBITRAGE BETWEEN RAYDIUM AND JUPITER QUICK AND EASY
         </p>
-        
-        <p style="font-size: 1.1rem; line-height: 1.8; margin: 2rem 0; text-align: center;">
-            USING A SIMPLE UI AND INNOVATIVE DESIGN, SOLFLARE USERS CAN LOAD GROUPS OF THEIR FAVORITE TRADING PAIRS, LINKED TO THE SAME WALLET, ALLOWING FOR THE FASTEST ARBITRAGE OPPORTUNITIES ON SOL!
+
+        <p style="font-size: 1.3rem; font-weight: 600; color: #3A84FF; text-align: center; margin: 1.5rem 0;">
+            Alpha Version Now Live!<br>
+            Making sure YOU get the BEST rates for your Solana Memecoins!
         </p>
         
-        <p style="font-size: 1.1rem; line-height: 1.8; margin: 2rem 0; text-align: center; color: rgba(255, 255, 255, 0.9);">
-          AN EARLY STAGE PRODUCT WHERE DEVELOPMENT FUNDS GENERATED FROM THE DEVELOPER WALLET WILL BE USED TO ADD ADDITIONAL FEATURES SUCH AS WALLET SUPPORT AND AI AGENT INTEGRATION.
-        </p>
-        
-        <p style="font-size: 1.2rem; font-weight: 600; color: #3A84FF; text-align: center; margin: 2rem 0;">
-          FOLLOW US ON X FOR THE PUMP.FUN CONTRACT ADDRESS. <br>TURN NOTIFICATIONS ON!
+        <div style="font-size: 1.1rem; line-height: 1.8; margin: 2rem 0; text-align: left; padding: 0 2rem;">
+            <ul style="color: rgba(255, 255, 255, 0.9); list-style-type: none; padding: 0;">
+                <li>✦ Built for Degens & Autonomous AI Agents (coming soon)</li>
+                <li>✦ Free, Fast & Easy Arbitrage between Raydium and Jupiter</li>
+                <li>✦ Simple UI tailored for the busy Degen</li>
+                <li>✦ Load Multiple Trading Pairs linked to a single wallet for seamless operations</li>
+                <li>✦ Upcoming Feature: Autonomous AI Agents to optimize and automate your trading strategies!</li>
+                <li>✦ Free, Open Source Platform for community driven development. Source Code on GitHub.</li>
+            </ul>
+        </div>
+
+        <p style="font-size: 1.1rem; text-align: center; margin: 2rem 0; color: rgba(255, 255, 255, 0.9);">
+            Proudly supporters of SolFlare Wallet.
         </p>
         
         <div style="text-align: center; margin: 2rem 0; display: flex; justify-content: center; gap: 2rem;">
@@ -43,7 +54,7 @@
             </a>
         </div>
         <div style="text-align: center; margin: 2rem 0; display: flex; justify-content: center; gap: 2rem;">
-        <button class="popup-button" onclick="closePopup()">Start Trading</button>
+            <button class="popup-button" onclick="closePopup()">Start Trading</button>
         </div>
     </div>
   </div>
@@ -114,12 +125,10 @@
 
   <!-- Container for iframes (tabs) -->
   <div id="tabs-container" style="margin-top: 108px;">
-    <!-- Add the centered logo container -->
     <div id="empty-state" style="display: none; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
       <img src="./assets/img/logo.png" alt="ArbitrageGuru Logo" style="max-width: 300px; height: auto;">
     </div>
-  </div>
-
-  <script src="./assets/js/script.js"></script>
+</div>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
