@@ -1,4 +1,3 @@
-
 // Make closePopup globally available
 function closePopup() {
   const popup = document.getElementById('welcomePopup');
@@ -335,11 +334,16 @@ document.addEventListener('DOMContentLoaded', () => {
       navigateTo(urlInput.value.trim());
     }
   });
+  refreshButton.textContent = 'Clear All Tabs'; // Change button text
   refreshButton.addEventListener('click', () => {
-    const curr = tabs[currentTabIndex]?.iframe.src;
-    if (curr) {
-      tabs[currentTabIndex].iframe.src = curr;
+    // Close all existing tabs
+    while (tabs.length > 0) {
+      closeTab(0);
     }
+    
+    // Open default homepage tabs
+    openNewTab(homePage);
+    openNewTab(jupiterPage);
   });
   homeButton.addEventListener('click', () => {
     // Open both Raydium and Jupiter as home pages
