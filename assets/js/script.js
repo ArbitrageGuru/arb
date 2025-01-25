@@ -29,8 +29,8 @@ function handleTokenAddressSubmit() {
     const tokenAddress = document.getElementById('tokenAddressInput').value.trim();
     if (tokenAddress) {
         // Construct URLs with the token address
-        const raydiumUrl = `https://raydium.io/swap/?inputMint=${tokenAddress}&outputMint=sol`;
-        const jupiterUrl = `https://jup.ag/swap/${tokenAddress}-SOL`;
+        const raydiumUrl = `https://raydium.io/swap/?inputMint=sol&outputMint=${tokenAddress}`;
+        const jupiterUrl = `https://jup.ag/swap/SOL-${tokenAddress}`;
         
         // Open new tabs with these URLs
         window.openNewTab(raydiumUrl);
