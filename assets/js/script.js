@@ -359,3 +359,4 @@ document.addEventListener('DOMContentLoaded', () => {
   loadState();
   updateHeaderPosition(); // set initial margin
 });
+

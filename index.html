@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ArbitrageGuru</title>
   
-  <!-- Remove any COOP/COEP meta tags -->
-  <!-- Add only essential meta tags -->
+  <meta name="description" content="Solana Memcoin Arbitrage Platform Made EASY! Become an Arbitrage Guru today! Devs, contribute to the project on GitHub. Free, Open Source Platform for the Solana Ecosystem.">
+  <meta name="application-name" content="ArbitrageGuru">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <meta name="referrer" content="no-referrer">
   
@@ -128,7 +128,99 @@
     <div id="empty-state" style="display: none; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
       <img src="./assets/img/logo.png" alt="ArbitrageGuru Logo" style="max-width: 300px; height: auto;">
     </div>
-</div>
+  </div>
+  
+  <!-- Custom Scrollbar -->
+  <div id="custom-scrollbar" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 10px; background: rgba(58, 132, 255, 0.1); cursor: pointer; z-index: 9999; pointer-events: auto;">
+    <div id="scroll-thumb" style="width: 100px; height: 100%; background: rgba(58, 132, 255, 1); position: absolute; left: 0; transition: background 0.2s;">
+    </div>
+  </div>
+
 <script src="./assets/js/script.js"></script>
+<script>
+function initCustomScrollbar() {
+    const scrollbar = document.getElementById('custom-scrollbar');
+    const thumb = document.getElementById('scroll-thumb');
+    const container = document.getElementById('tabs-container');
+    let isDragging = false;
+
+    // Prevent events from propagating through the scrollbar
+    scrollbar.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Calculate new thumb position based on click
+        const scrollbarRect = scrollbar.getBoundingClientRect();
+        const thumbWidth = thumb.offsetWidth;
+        let newLeft = e.clientX - scrollbarRect.left - (thumbWidth / 2);
+        
+        // Constrain thumb position
+        newLeft = Math.max(0, Math.min(newLeft, scrollbar.offsetWidth - thumbWidth));
+        
+        // Update thumb position
+        thumb.style.left = `${newLeft}px`;
+        
+        // Calculate and set container scroll position
+        const scrollPercentage = newLeft / (scrollbar.offsetWidth - thumbWidth);
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        container.scrollLeft = scrollPercentage * maxScroll;
+        
+        // Start dragging from this position
+        isDragging = true;
+        thumb.style.background = 'rgba(58, 132, 255, 0.6)';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const scrollbarRect = scrollbar.getBoundingClientRect();
+        const thumbWidth = thumb.offsetWidth;
+        let newLeft = e.clientX - scrollbarRect.left - (thumbWidth / 2);
+        
+        // Constrain thumb position
+        newLeft = Math.max(0, Math.min(newLeft, scrollbar.offsetWidth - thumbWidth));
+        
+        // Update thumb position
+        thumb.style.left = `${newLeft}px`;
+        
+        // Calculate and set container scroll position
+        const scrollPercentage = newLeft / (scrollbar.offsetWidth - thumbWidth);
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        container.scrollLeft = scrollPercentage * maxScroll;
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            thumb.style.background = 'rgba(58, 132, 255, 0.4)';
+        }
+    });
+
+    // Update thumb position and width when scrolling
+    function updateThumb() {
+        if (!isDragging) {
+            const scrollPercentage = container.scrollLeft / (container.scrollWidth - container.clientWidth);
+            const maxLeft = scrollbar.offsetWidth - thumb.offsetWidth;
+            thumb.style.left = `${scrollPercentage * maxLeft}px`;
+        }
+        
+        // Update thumb width based on content
+        const thumbWidth = Math.max(100, (container.clientWidth / container.scrollWidth) * scrollbar.offsetWidth);
+        thumb.style.width = `${thumbWidth}px`;
+    }
+
+    container.addEventListener('scroll', updateThumb);
+    window.addEventListener('resize', updateThumb);
+    
+    // Initial update
+    updateThumb();
+}
+
+// Call this function after the DOM is loaded
+document.addEventListener('DOMContentLoaded', initCustomScrollbar);
+</script>
 </body>
 </html>
