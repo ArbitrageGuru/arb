@@ -18,42 +18,42 @@
 <body>
   <!-- Updated Popup HTML -->
   <div class="popup-overlay" id="welcomePopup">
-    <div class="popup-content" style="margin-top: 100px;">
-        <h2>ARB.GURU</h2>
+    <div class="popup-content">
+        <h2 style="margin-bottom: 1rem;">ARB.GURU</h2>
         
-        <p style="font-size: 1.4rem; font-weight: 600; background: linear-gradient(135deg, #5D3AC9, #3A84FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin: 2rem 0;">
+        <p style="font-size: 1.2rem; font-weight: 600; background: linear-gradient(135deg, #5D3AC9, #3A84FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin: 1rem 0;">
             WE MAKE ARBITRAGE BETWEEN RAYDIUM AND JUPITER QUICK AND EASY
         </p>
 
-        <p style="font-size: 1.3rem; font-weight: 600; color: #3A84FF; text-align: center; margin: 1.5rem 0;">
+        <p style="font-size: 1.1rem; font-weight: 600; color: #3A84FF; text-align: center; margin: 1rem 0;">
             Alpha Version Now Live!<br>
             Making sure YOU get the BEST rates for your Solana Memecoins!
         </p>
         
-        <div style="font-size: 1.1rem; line-height: 1.8; margin: 2rem 0; text-align: left; padding: 0 2rem;">
-            <ul style="color: rgba(255, 255, 255, 0.9); list-style-type: none; padding: 0;">
-                <li>✦ Built for Degens & Autonomous AI Agents (coming soon)</li>
-                <li>✦ Free, Fast & Easy Arbitrage between Raydium and Jupiter</li>
-                <li>✦ Simple UI tailored for the busy Degen</li>
-                <li>✦ Load Multiple Trading Pairs linked to a single wallet for seamless operations</li>
-                <li>✦ Upcoming Feature: Autonomous AI Agents to optimize and automate your trading strategies!</li>
-                <li>✦ Free, Open Source Platform for community driven development. Source Code on GitHub.</li>
+        <div style="font-size: 0.95rem; line-height: 1.5; margin: 1rem 0; text-align: left; padding: 0 2rem;">
+            <ul style="color: rgba(255, 255, 255, 0.9); list-style-type: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1rem;">
+              <li>✦ Built for Degens & Autonomous AI Agents (coming soon)</li>
+              <li>✦ Free, Fast & Easy Arbitrage between Raydium and Jupiter</li>
+              <li>✦ Simple UI tailored for the busy Degen</li>
+              <li>✦ Load Multiple Trading Pairs linked to a single wallet for seamless operations</li>
+              <li>✦ Upcoming Feature: Autonomous AI Agents to optimize and automate your trading strategies!</li>
+              <li>✦ Free, Open Source Platform for community driven development. Source Code on GitHub.</li>
             </ul>
         </div>
 
-        <p style="font-size: 1.1rem; text-align: center; margin: 2rem 0; color: rgba(255, 255, 255, 0.9);">
+        <p style="font-size: 0.9rem; text-align: center; margin: 1rem 0; color: rgba(255, 255, 255, 0.9);">
             Proud supporters of SolFlare Wallet.
         </p>
         
-        <div style="text-align: center; margin: 2rem 0; display: flex; justify-content: center; gap: 2rem;">
-            <a href="https://x.com/ArbitrageGuru" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 1.2rem;">
+        <div style="text-align: center; margin: 1rem 0; display: flex; justify-content: center; gap: 2rem;">
+            <a href="https://x.com/ArbitrageGuru" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 1rem;">
                 <i class="fa-brands fa-x-twitter" style="color: #3A84FF;"></i> @ArbitrageGuru
             </a>
-            <a href="https://github.com/ArbitrageGuru" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 1.2rem;">
+            <a href="https://github.com/ArbitrageGuru" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; color: #fff; text-decoration: none; font-size: 1rem;">
                 <i class="fab fa-github" style="color: #3A84FF;"></i> @ArbitrageGuru
             </a>
         </div>
-        <div style="text-align: center; margin: 2rem 0; display: flex; justify-content: center; gap: 2rem;">
+        <div style="text-align: center; margin: 1rem 0; display: flex; justify-content: center; gap: 2rem;">
             <button class="popup-button" onclick="closePopup()">Start Trading</button>
         </div>
     </div>
@@ -86,6 +86,7 @@
   <div id="header-container" style="transform: translateY(0px);">
     <!-- Browser Bar -->
     <div id="browser-bar">
+      <button id="ai-agent-button" style="background: linear-gradient(135deg, #5D3AC9, #3A84FF); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-right: 15px;">Add AI Agent</button>
       <button id="refresh-button">Refresh</button>
       <button id="home-button">Home</button>
 
@@ -114,7 +115,7 @@
       <button class="bookmark-pair-button" data-pair="TRUMP_SOL">TRUMP / SOL</button>
       <button class="bookmark-pair-button" data-pair="STONKS_SOL">STONKS / SOL</button>
       <button class="bookmark-pair-button" data-pair="VINE_SOL">VINE / SOL</button>
-      <button class="bookmark-pair-button" data-pair="MELANIA_SOL">MELANIA / SOL</button>
+      <!-- <button class="bookmark-pair-button" data-pair="MELANIA_SOL">MELANIA / SOL</button> -->
     </div>
 
     <!-- Tabs Bar -->
@@ -136,91 +137,28 @@
     </div>
   </div>
 
+  <!-- AI Agent Modal -->
+  <div class="popup-overlay" id="aiAgentPopup" style="display: none;">
+    <div class="popup-content" style="max-width: 500px;">
+        <h2 style="background: linear-gradient(135deg, #5D3AC9, #3A84FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Coming Soon: Automated AI Agents!</h2>
+        <h3 style="color: #3A84FF; margin-top: 1rem;">Exciting Update Ahead!</h3>
+        
+        <p style="font-size: 1.1rem; line-height: 1.6; margin: 2rem 0; color: rgba(255, 255, 255, 0.9);">
+            We're developing Autonomous AI Agents to make arbitrage trades on your behalf, simply feed in your OpenAI API Key and let your AI agent do the rest!
+        </p>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="https://x.com/ArbitrageGuru" target="_blank" class="twitter-notification-btn">
+                <i class="fa-brands fa-x-twitter"></i> Turn on notifications to be the first to know when AI Agents launch
+            </a>
+        </div>
+
+        <div style="text-align: center;">
+            <button class="popup-button" onclick="closeAiAgentPopup()">Close</button>
+        </div>
+    </div>
+  </div>
+
 <script src="./assets/js/script.js"></script>
-<script>
-function initCustomScrollbar() {
-    const scrollbar = document.getElementById('custom-scrollbar');
-    const thumb = document.getElementById('scroll-thumb');
-    const container = document.getElementById('tabs-container');
-    let isDragging = false;
-
-    // Prevent events from propagating through the scrollbar
-    scrollbar.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Calculate new thumb position based on click
-        const scrollbarRect = scrollbar.getBoundingClientRect();
-        const thumbWidth = thumb.offsetWidth;
-        let newLeft = e.clientX - scrollbarRect.left - (thumbWidth / 2);
-        
-        // Constrain thumb position
-        newLeft = Math.max(0, Math.min(newLeft, scrollbar.offsetWidth - thumbWidth));
-        
-        // Update thumb position
-        thumb.style.left = `${newLeft}px`;
-        
-        // Calculate and set container scroll position
-        const scrollPercentage = newLeft / (scrollbar.offsetWidth - thumbWidth);
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        container.scrollLeft = scrollPercentage * maxScroll;
-        
-        // Start dragging from this position
-        isDragging = true;
-        thumb.style.background = 'rgba(58, 132, 255, 0.6)';
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const scrollbarRect = scrollbar.getBoundingClientRect();
-        const thumbWidth = thumb.offsetWidth;
-        let newLeft = e.clientX - scrollbarRect.left - (thumbWidth / 2);
-        
-        // Constrain thumb position
-        newLeft = Math.max(0, Math.min(newLeft, scrollbar.offsetWidth - thumbWidth));
-        
-        // Update thumb position
-        thumb.style.left = `${newLeft}px`;
-        
-        // Calculate and set container scroll position
-        const scrollPercentage = newLeft / (scrollbar.offsetWidth - thumbWidth);
-        const maxScroll = container.scrollWidth - container.clientWidth;
-        container.scrollLeft = scrollPercentage * maxScroll;
-    });
-
-    document.addEventListener('mouseup', () => {
-        if (isDragging) {
-            isDragging = false;
-            thumb.style.background = 'rgba(58, 132, 255, 0.4)';
-        }
-    });
-
-    // Update thumb position and width when scrolling
-    function updateThumb() {
-        if (!isDragging) {
-            const scrollPercentage = container.scrollLeft / (container.scrollWidth - container.clientWidth);
-            const maxLeft = scrollbar.offsetWidth - thumb.offsetWidth;
-            thumb.style.left = `${scrollPercentage * maxLeft}px`;
-        }
-        
-        // Update thumb width based on content
-        const thumbWidth = Math.max(100, (container.clientWidth / container.scrollWidth) * scrollbar.offsetWidth);
-        thumb.style.width = `${thumbWidth}px`;
-    }
-
-    container.addEventListener('scroll', updateThumb);
-    window.addEventListener('resize', updateThumb);
-    
-    // Initial update
-    updateThumb();
-}
-
-// Call this function after the DOM is loaded
-document.addEventListener('DOMContentLoaded', initCustomScrollbar);
-</script>
 </body>
 </html>

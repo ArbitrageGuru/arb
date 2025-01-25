@@ -360,3 +360,106 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHeaderPosition(); // set initial margin
 });
 
+
+function initCustomScrollbar() {
+  const scrollbar = document.getElementById('custom-scrollbar');
+  const thumb = document.getElementById('scroll-thumb');
+  const container = document.getElementById('tabs-container');
+  let isDragging = false;
+
+  // Prevent events from propagating through the scrollbar
+  scrollbar.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Calculate new thumb position based on click
+      const scrollbarRect = scrollbar.getBoundingClientRect();
+      const thumbWidth = thumb.offsetWidth;
+      let newLeft = e.clientX - scrollbarRect.left - (thumbWidth / 2);
+      
+      // Constrain thumb position
+      newLeft = Math.max(0, Math.min(newLeft, scrollbar.offsetWidth - thumbWidth));
+      
+      // Update thumb position
+      thumb.style.left = `${newLeft}px`;
+      
+      // Calculate and set container scroll position
+      const scrollPercentage = newLeft / (scrollbar.offsetWidth - thumbWidth);
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      container.scrollLeft = scrollPercentage * maxScroll;
+      
+      // Start dragging from this position
+      isDragging = true;
+      thumb.style.background = 'rgba(58, 132, 255, 0.6)';
+  });
+
+  document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const scrollbarRect = scrollbar.getBoundingClientRect();
+      const thumbWidth = thumb.offsetWidth;
+      let newLeft = e.clientX - scrollbarRect.left - (thumbWidth / 2);
+      
+      // Constrain thumb position
+      newLeft = Math.max(0, Math.min(newLeft, scrollbar.offsetWidth - thumbWidth));
+      
+      // Update thumb position
+      thumb.style.left = `${newLeft}px`;
+      
+      // Calculate and set container scroll position
+      const scrollPercentage = newLeft / (scrollbar.offsetWidth - thumbWidth);
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      container.scrollLeft = scrollPercentage * maxScroll;
+  });
+
+  document.addEventListener('mouseup', () => {
+      if (isDragging) {
+          isDragging = false;
+          thumb.style.background = 'rgba(58, 132, 255, 0.4)';
+      }
+  });
+
+  // Update thumb position and width when scrolling
+  function updateThumb() {
+      if (!isDragging) {
+          const scrollPercentage = container.scrollLeft / (container.scrollWidth - container.clientWidth);
+          const maxLeft = scrollbar.offsetWidth - thumb.offsetWidth;
+          thumb.style.left = `${scrollPercentage * maxLeft}px`;
+      }
+      
+      // Update thumb width based on content
+      const thumbWidth = Math.max(100, (container.clientWidth / container.scrollWidth) * scrollbar.offsetWidth);
+      thumb.style.width = `${thumbWidth}px`;
+  }
+
+  container.addEventListener('scroll', updateThumb);
+  window.addEventListener('resize', updateThumb);
+  
+  // Initial update
+  updateThumb();
+}
+
+// Call this function after the DOM is loaded
+document.addEventListener('DOMContentLoaded', initCustomScrollbar);
+
+// Add these functions to your existing JavaScript
+function showAiAgentPopup() {
+  const popup = document.getElementById('aiAgentPopup');
+  popup.style.display = 'flex';
+  popup.style.opacity = '1';
+}
+
+function closeAiAgentPopup() {
+  const popup = document.getElementById('aiAgentPopup');
+  popup.style.opacity = '0';
+  popup.style.transition = 'opacity 0.3s ease';
+  setTimeout(() => {
+      popup.style.display = 'none';
+  }, 300);
+}
+
+// Add this to your DOMContentLoaded event listener
+document.getElementById('ai-agent-button').addEventListener('click', showAiAgentPopup);
