@@ -83,6 +83,29 @@
     </div>
   </div>
 
+  <!-- Add this new modal for entering URLs (place it after the other popups) -->
+  <div class="popup-overlay" id="urlInputPopup" style="display: none;">
+    <div class="popup-content">
+        <h2>Open New Tab</h2>
+        <input type="text" id="newTabUrlInput" 
+               style="width: 100%; padding: 12px; margin: 20px 0; 
+                      background: rgba(140, 82, 255, 0.1); border: 1px solid rgba(140, 82, 255, 0.2);
+                      border-radius: 8px; color: #fff; font-size: 14px;"
+               placeholder="Enter URL">
+        <div style="text-align: center;">
+            <button class="popup-button" onclick="handleUrlSubmit()">Open Tab</button>
+            <button class="popup-button" onclick="showNewTabPopup(); closeUrlInputPopup();" 
+                    style="background: transparent; border: 1px solid #5D3AC9; margin-left: 10px;">
+                Enter Contract Address
+            </button>
+            <button class="popup-button" onclick="closeUrlInputPopup()" 
+                    style="background: transparent; border: 1px solid #5D3AC9; margin-left: 10px;">
+                Cancel
+            </button>
+        </div>
+    </div>
+  </div>
+
   <!-- Small Pull Tab at top center -->
   <div id="pull-tab"><i class="fas fa-chevron-up"></i> Hide Menu</div>
 
@@ -97,8 +120,9 @@
       <label for="url-input">URL:</label>
       <input id="url-input" type="text" placeholder="Enter a URL">
       <button id="go-button">Go</button>
+      <button id="new-tab-button">New Tab</button>
 
-      <button id="new-tab-button">New CA</button>
+      <button id="new-tab-button">Load CA</button>
 
       <!-- Pump.fun Logo -->
       <a target="_blank" href="https://pump.fun/">

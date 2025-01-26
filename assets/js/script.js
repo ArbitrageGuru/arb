@@ -41,6 +41,36 @@ function handleTokenAddressSubmit() {
     }
 }
 
+// Add these new functions at the top level (outside DOMContentLoaded)
+function showUrlInputPopup() {
+    const popup = document.getElementById('urlInputPopup');
+    popup.style.display = 'flex';
+    popup.style.opacity = '1';
+    document.getElementById('newTabUrlInput').value = '';
+    
+    // Focus the input field
+    setTimeout(() => {
+        document.getElementById('newTabUrlInput').focus();
+    }, 100);
+}
+
+function closeUrlInputPopup() {
+    const popup = document.getElementById('urlInputPopup');
+    popup.style.opacity = '0';
+    popup.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => {
+        popup.style.display = 'none';
+    }, 300);
+}
+
+function handleUrlSubmit() {
+    const url = document.getElementById('newTabUrlInput').value.trim();
+    if (url) {
+        window.openNewTab(url);
+        closeUrlInputPopup();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // DOM references
   const pullTab         = document.getElementById('pull-tab');
@@ -364,7 +394,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // New Tab Button
   newTabButton.addEventListener('click', () => {
-    showNewTabPopup();
+    showUrlInputPopup();
+  });
+
+  // Add event listener for Enter key in the URL input
+  document.getElementById('newTabUrlInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      handleUrlSubmit();
+    }
   });
 
   // Make openNewTab globally available
