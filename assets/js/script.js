@@ -64,20 +64,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // Preset Bookmark Pairs
   const bookmarkPairs = {
     "TRUMP_SOL": [
-      "https://raydium.io/swap/?inputMint=6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN&outputMint=sol",
-      "https://jup.ag/swap/6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN-SOL"
+      "https://raydium.io/swap/?inputMint=sol&outputMint=6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+      "https://jup.ag/swap/SOL-6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN"
     ],
     "STONKS_SOL": [
-      "https://raydium.io/swap/?inputMint=6NcdiK8B5KK2DzKvzvCfqi8EHaEqu48fyEzC8Mm9pump&outputMint=sol",
-      "https://jup.ag/swap/6NcdiK8B5KK2DzKvzvCfqi8EHaEqu48fyEzC8Mm9pump-SOL"
+      "https://raydium.io/swap/?inputMint=sol&outputMint=6NcdiK8B5KK2DzKvzvCfqi8EHaEqu48fyEzC8Mm9pump",
+      "https://jup.ag/swap/SOL-6NcdiK8B5KK2DzKvzvCfqi8EHaEqu48fyEzC8Mm9pump"
     ],
     "VINE_SOL": [
-      "https://raydium.io/swap/?inputMint=6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump&outputMint=sol",
-      "https://jup.ag/swap/6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump-SOL"
+      "https://raydium.io/swap/?inputMint=sol&outputMint=6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump",
+      "https://jup.ag/swap/SOL-6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump"
     ],
     "MELANIA_SOL": [
-      "https://raydium.io/swap/?inputMint=FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P&outputMint=sol",
-      "https://jup.ag/swap/FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P-SOL"
+      "https://raydium.io/swap/?inputMint=sol&outputMint=FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
+      "https://jup.ag/swap/SOL-FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P"
+    ],
+    "BULLX": [
+      "https://bullx.io/login"
+    ],
+    "RAYDIUM": [
+      "https://raydium.io/"
+    ],
+    "JUPITER": [
+      "https://jup.ag/"
     ]
   };
 
@@ -334,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navigateTo(urlInput.value.trim());
     }
   });
-  refreshButton.textContent = 'Clear All Tabs'; // Change button text
+  refreshButton.textContent = 'Home'; // Change button text
   refreshButton.addEventListener('click', () => {
     // Close all existing tabs
     while (tabs.length > 0) {
@@ -346,9 +355,11 @@ document.addEventListener('DOMContentLoaded', () => {
     openNewTab(jupiterPage);
   });
   homeButton.addEventListener('click', () => {
-    // Open both Raydium and Jupiter as home pages
-    openNewTab(homePage);
-    openNewTab(jupiterPage);
+    // Close all existing tabs
+    while (tabs.length > 0) {
+      closeTab(0);
+    }
+    // Empty state will be automatically shown when all tabs are closed
   });
 
   // New Tab Button

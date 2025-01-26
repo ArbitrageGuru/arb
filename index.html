@@ -92,7 +92,7 @@
     <div id="browser-bar">
       <button id="ai-agent-button" style="background: linear-gradient(135deg, #5D3AC9, #3A84FF); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-right: 15px;">Add AI Agent</button>
       <button id="refresh-button">Refresh</button>
-      <button id="home-button">Home</button>
+      <button id="home-button">Clear All Tabs</button>
 
       <label for="url-input">URL:</label>
       <input id="url-input" type="text" placeholder="Enter a URL">
@@ -116,9 +116,12 @@
       </div>
 
       <!-- Bookmark Pair Buttons -->
-      <button class="bookmark-pair-button" data-pair="TRUMP_SOL">TRUMP / SOL</button>
-      <button class="bookmark-pair-button" data-pair="STONKS_SOL">STONKS / SOL</button>
-      <button class="bookmark-pair-button" data-pair="VINE_SOL">VINE / SOL</button>
+      <!-- <button class="bookmark-pair-button" data-pair="TRUMP_SOL">SOL / TRUMP</button>
+      <button class="bookmark-pair-button" data-pair="STONKS_SOL">SOL / STONKS</button>
+      <button class="bookmark-pair-button" data-pair="VINE_SOL">SOL / VINE</button> -->
+      <button class="bookmark-pair-button" data-pair="BULLX">BULLX</button>
+      <button class="bookmark-pair-button" data-pair="RAYDIUM">RAYDIUM</button>
+      <button class="bookmark-pair-button" data-pair="JUPITER">JUPITER</button>
       <!-- <button class="bookmark-pair-button" data-pair="MELANIA_SOL">MELANIA / SOL</button> -->
     </div>
 
@@ -143,8 +146,8 @@
 
   <!-- AI Agent Modal -->
   <div class="popup-overlay" id="aiAgentPopup" style="display: none;">
-    <div class="popup-content" style="max-width: 500px;">
-        <h2 style="background: linear-gradient(135deg, #5D3AC9, #3A84FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Coming Soon: Automated AI Agents!</h2>
+    <div class="popup-content" style="max-width: 500px;text-align: center;">
+        <h2 style="background: linear-gradient(135deg, #3A84FF, #3A84FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Coming Soon:<br> Automated AI Agents!</h2>
         <h3 style="color: #3A84FF; margin-top: 1rem;">Exciting Update Ahead!</h3>
         
         <p style="font-size: 1.1rem; line-height: 1.6; margin: 2rem 0; color: rgba(255, 255, 255, 0.9);">
