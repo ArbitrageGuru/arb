@@ -116,6 +116,11 @@
       <button id="ai-agent-button" style="background: linear-gradient(135deg, #5D3AC9, #3A84FF); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-right: 15px;">Add AI Agent</button>
       <button id="refresh-button">Refresh</button>
       <button id="home-button">Clear All Tabs</button>
+      <button id="mode-toggle" class="mode-toggle-button" onclick="toggleMode()">
+        <span class="mode-text left-mode">SOL</span>
+        <div class="toggle-slider"></div>
+        <span class="mode-text right-mode">ABSTRACT</span>
+      </button>
 
       <label for="url-input"></label>
       <input id="url-input" type="text" placeholder="Enter URL or CA">

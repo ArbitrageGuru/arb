@@ -25,18 +25,53 @@ function closeNewTabPopup() {
     }, 300);
 }
 
+// Add these at the top level of the file
+let currentMode = 'SOL'; // Default to SOL mode
+
+function toggleMode() {
+    currentMode = currentMode === 'SOL' ? 'ABSTRACT' : 'SOL';
+    const toggleButton = document.getElementById('mode-toggle');
+    
+    // Update button state
+    toggleButton.setAttribute('data-mode', currentMode);
+    
+    // Update the home pages based on current mode
+    if (currentMode === 'SOL') {
+        homePage = 'https://raydium.io/swap/?inputMint=6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN&outputMint=sol';
+        jupiterPage = 'https://jup.ag/swap/6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN-SOL';
+    } else {
+        homePage = 'https://www.abstract.pumpevm.com/';
+    }
+
+    // Close all existing tabs
+    while (tabs.length > 0) {
+        closeTab(0);
+    }
+    
+    // Open default page(s) for current mode
+    if (currentMode === 'SOL') {
+        openNewTab(homePage);
+        openNewTab(jupiterPage);
+    } else {
+        openNewTab(homePage);
+    }
+}
+
+// Modify the handleTokenAddressSubmit function
 function handleTokenAddressSubmit() {
     const tokenAddress = document.getElementById('tokenAddressInput').value.trim();
     if (tokenAddress) {
-        // Construct URLs with the token address
-        const raydiumUrl = `https://raydium.io/swap/?inputMint=sol&outputMint=${tokenAddress}`;
-        const jupiterUrl = `https://jup.ag/swap/SOL-${tokenAddress}`;
-        
-        // Open new tabs with these URLs
-        window.openNewTab(raydiumUrl);
-        window.openNewTab(jupiterUrl);
-        
-        // Close the popup
+        if (currentMode === 'SOL') {
+            // Existing SOL behavior
+            const raydiumUrl = `https://raydium.io/swap/?inputMint=sol&outputMint=${tokenAddress}`;
+            const jupiterUrl = `https://jup.ag/swap/SOL-${tokenAddress}`;
+            openNewTab(raydiumUrl);
+            openNewTab(jupiterUrl);
+        } else {
+            // ABSTRACT behavior
+            const abstractUrl = `https://www.abstract.pumpevm.com/trade/${tokenAddress}`;
+            openNewTab(abstractUrl);
+        }
         closeNewTabPopup();
     }
 }
@@ -364,21 +399,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Basic Navigation Controls
+  // Modify the goButton click handler
   goButton.addEventListener('click', () => {
     const input = urlInput.value.trim();
     
-    // Check if input looks like a token address (simple validation)
-    const isTokenAddress = /^[A-HJ-NP-Za-km-z1-9]{32,44}$/.test(input);
+    // Check if input looks like a token address
+    const isTokenAddress = /^[A-HJ-NP-Za-km-z1-9]{32,44}$/.test(input) || // SOL address format
+                         /^0x[a-fA-F0-9]{40}$/.test(input);               // ETH address format
     
     if (isTokenAddress) {
-        // Construct URLs with the token address
-        const raydiumUrl = `https://raydium.io/swap/?inputMint=sol&outputMint=${input}`;
-        const jupiterUrl = `https://jup.ag/swap/SOL-${input}`;
-        
-        // Open new tabs with these URLs
-        openNewTab(raydiumUrl);
-        openNewTab(jupiterUrl);
+        if (currentMode === 'SOL') {
+            // Existing SOL behavior
+            const raydiumUrl = `https://raydium.io/swap/?inputMint=sol&outputMint=${input}`;
+            const jupiterUrl = `https://jup.ag/swap/SOL-${input}`;
+            openNewTab(raydiumUrl);
+            openNewTab(jupiterUrl);
+        } else {
+            // ABSTRACT behavior
+            const abstractUrl = `https://www.abstract.pumpevm.com/trade/${input}`;
+            openNewTab(abstractUrl);
+        }
     } else {
         // Treat as regular URL
         let url = input;

@@ -381,3 +381,77 @@ left: 100%;
 .twitter-notification-btn:hover {
     background: rgba(58, 132, 255, 0.2);
 }
+
+/* Mode Toggle Button */
+.mode-toggle-button {
+    width: 200px;
+    height: 40px;
+    position: relative;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 3px !important;
+    background: rgba(15, 18, 37, 0.95) !important;
+    border: 1px solid rgba(93, 58, 201, 0.3) !important;
+    border-radius: 24px !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    height: 28px;
+}
+
+.mode-toggle-button:hover {
+    background: rgba(20, 23, 42, 0.95) !important;
+    border-color: rgba(93, 58, 201, 0.4) !important;
+}
+
+.mode-text {
+    padding: 0 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    z-index: 1;
+    text-transform: uppercase;
+    width: 50%;
+    text-align: center;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(50% - 2px);
+    height: calc(100% - 4px);
+    background: #3A84FF;
+    border-radius: 22px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 1px 4px rgba(58, 132, 255, 0.3);
+}
+
+/* Initial state - SOL mode */
+.mode-toggle-button[data-mode="SOL"] .left-mode {
+    color: #fff;
+}
+
+.mode-toggle-button[data-mode="SOL"] .right-mode {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mode-toggle-button[data-mode="SOL"] .toggle-slider {
+    transform: translateX(0);
+}
+
+/* ABSTRACT mode */
+.mode-toggle-button[data-mode="ABSTRACT"] .left-mode {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mode-toggle-button[data-mode="ABSTRACT"] .right-mode {
+    color: #fff;
+}
+
+.mode-toggle-button[data-mode="ABSTRACT"] .toggle-slider {
+    transform: translateX(100%);
+}
