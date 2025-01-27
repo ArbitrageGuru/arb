@@ -366,11 +366,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Basic Navigation Controls
   goButton.addEventListener('click', () => {
-    navigateTo(urlInput.value.trim());
+    const input = urlInput.value.trim();
+    
+    // Check if input looks like a token address (simple validation)
+    const isTokenAddress = /^[A-HJ-NP-Za-km-z1-9]{32,44}$/.test(input);
+    
+    if (isTokenAddress) {
+        // Construct URLs with the token address
+        const raydiumUrl = `https://raydium.io/swap/?inputMint=sol&outputMint=${input}`;
+        const jupiterUrl = `https://jup.ag/swap/SOL-${input}`;
+        
+        // Open new tabs with these URLs
+        openNewTab(raydiumUrl);
+        openNewTab(jupiterUrl);
+    } else {
+        // Treat as regular URL
+        let url = input;
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            url = 'https://' + url;
+        }
+        openNewTab(url);
+    }
   });
   urlInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-      navigateTo(urlInput.value.trim());
+      goButton.click(); // Trigger the same behavior as clicking Go
     }
   });
   refreshButton.textContent = 'Home'; // Change button text
@@ -410,6 +430,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize: Load saved state or open default tabs on load
   loadState();
   updateHeaderPosition(); // set initial margin
+
+  // Add these new event listeners for the URL input
+  urlInput.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click from propagating
+    urlInput.focus(); // Ensure focus
+  });
+
+  urlInput.addEventListener('mousedown', (e) => {
+    e.stopPropagation(); // Prevent mousedown from propagating
+  });
+
+  // Prevent any parent elements from stealing focus
+  urlInput.addEventListener('blur', (e) => {
+    // Only prevent blur if the related target is not another input or meaningful interactive element
+    if (!e.relatedTarget || !['INPUT', 'BUTTON', 'A'].includes(e.relatedTarget.tagName)) {
+      e.preventDefault();
+      urlInput.focus();
+    }
+  });
 });
 
 
