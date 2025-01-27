@@ -431,23 +431,13 @@ document.addEventListener('DOMContentLoaded', () => {
   loadState();
   updateHeaderPosition(); // set initial margin
 
-  // Add these new event listeners for the URL input
+  // Replace the existing URL input event listeners with these:
   urlInput.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent click from propagating
-    urlInput.focus(); // Ensure focus
+    e.stopPropagation();
   });
 
   urlInput.addEventListener('mousedown', (e) => {
-    e.stopPropagation(); // Prevent mousedown from propagating
-  });
-
-  // Prevent any parent elements from stealing focus
-  urlInput.addEventListener('blur', (e) => {
-    // Only prevent blur if the related target is not another input or meaningful interactive element
-    if (!e.relatedTarget || !['INPUT', 'BUTTON', 'A'].includes(e.relatedTarget.tagName)) {
-      e.preventDefault();
-      urlInput.focus();
-    }
+    e.stopPropagation();
   });
 });
 
