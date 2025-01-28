@@ -111,6 +111,17 @@ background: linear-gradient(135deg, rgba(58, 132, 255, 0.4) 0%, rgba(93, 58, 201
 box-shadow: 0 4px 12px rgba(58, 132, 255, 0.3) !important;
 }
 
+/* Abstract theme bookmark buttons */
+body[data-theme="abstract"] .bookmark-pair-button {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 200, 0, 0.1) 100%) !important;
+    border: 1px solid rgba(0, 255, 0, 0.2) !important;
+}
+
+body[data-theme="abstract"] .bookmark-pair-button:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 200, 0, 0.2) 100%) !important;
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2) !important;
+}
+
 /* Tabs Bar */
 #tabs-bar {
 display: flex;
@@ -385,7 +396,7 @@ left: 100%;
 /* Mode Toggle Button */
 .mode-toggle-button {
     width: 200px;
-    height: 40px;
+    height: 40px !important;
     position: relative;
     display: inline-flex !important;
     align-items: center;
@@ -398,7 +409,7 @@ left: 100%;
     cursor: pointer;
     transition: all 0.3s ease;
     min-width: 140px;
-    height: 28px;
+    /* height: 28px; */
 }
 
 .mode-toggle-button:hover {
@@ -454,4 +465,119 @@ left: 100%;
 
 .mode-toggle-button[data-mode="ABSTRACT"] .toggle-slider {
     transform: translateX(100%);
+}
+
+/* Theme-specific styles */
+body[data-theme="abstract"] {
+    background: linear-gradient(135deg, #0A1F0A 0%, #1A2F1A 100%);
+}
+
+body[data-theme="abstract"] #header-container {
+    background: rgba(10, 31, 10, 0.95);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+}
+
+body[data-theme="abstract"] #browser-bar button,
+body[data-theme="abstract"] #browser-bar label input[type="checkbox"] {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 200, 0, 0.1) 100%);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+body[data-theme="abstract"] #browser-bar button:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 200, 0, 0.2) 100%);
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+}
+
+body[data-theme="abstract"] #url-input {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+body[data-theme="abstract"] #url-input:focus {
+    border-color: rgba(0, 255, 0, 0.4);
+    box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.1);
+}
+
+body[data-theme="abstract"] .tab {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(0, 200, 0, 0.1) 100%);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+body[data-theme="abstract"] .tab:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.15) 0%, rgba(0, 200, 0, 0.15) 100%);
+}
+
+body[data-theme="abstract"] #pull-tab {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-top: none;
+}
+
+body[data-theme="abstract"] #pull-tab:hover {
+    background: rgba(0, 255, 0, 0.15);
+}
+
+/* Update scrollbar for abstract theme */
+body[data-theme="abstract"] ::-webkit-scrollbar-track {
+    background: rgba(0, 255, 0, 0.05);
+}
+
+body[data-theme="abstract"] ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.2) 0%, rgba(0, 200, 0, 0.2) 100%);
+}
+
+body[data-theme="abstract"] ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.3) 0%, rgba(0, 200, 0, 0.3) 100%);
+}
+
+/* AI Agent Button Theme Changes */
+body[data-theme="abstract"] #ai-agent-button {
+    background: linear-gradient(135deg, #0A3F0A, #0A5F0A) !important;
+    border: 1px solid rgba(0, 255, 0, 0.2) !important;
+}
+
+body[data-theme="abstract"] #ai-agent-button:hover {
+    background: linear-gradient(135deg, #0A5F0A, #0A7F0A) !important;
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+}
+
+/* Mode Toggle Button Theme Changes */
+body[data-theme="abstract"] .mode-toggle-button {
+    background: rgba(10, 31, 10, 0.95) !important;
+    border: 1px solid rgba(0, 255, 0, 0.2) !important;
+}
+
+body[data-theme="abstract"] .mode-toggle-button:hover {
+    background: rgba(15, 46, 15, 0.95) !important;
+    border-color: rgba(0, 255, 0, 0.3) !important;
+}
+
+body[data-theme="abstract"] .toggle-slider {
+    background: #0A5F0A;
+    box-shadow: 0 1px 4px rgba(0, 255, 0, 0.3);
+}
+
+body[data-theme="abstract"] .mode-text {
+    color: rgba(0, 255, 0, 0.7);
+}
+
+body[data-theme="abstract"] .mode-toggle-button[data-mode="ABSTRACT"] .right-mode {
+    color: #fff;
+}
+
+body[data-theme="abstract"] .mode-toggle-button[data-mode="ABSTRACT"] .left-mode {
+    color: rgba(0, 255, 0, 0.5);
+}
+
+/* Custom scrollbar for tabs container */
+body[data-theme="abstract"] #custom-scrollbar {
+    background: rgba(0, 255, 0, 0.05) !important;
+}
+
+body[data-theme="abstract"] #scroll-thumb {
+    background: rgba(0, 255, 0, 0.3) !important;
+}
+
+body[data-theme="abstract"] #scroll-thumb:hover {
+    background: rgba(0, 255, 0, 0.4) !important;
 }

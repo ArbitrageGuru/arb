@@ -35,6 +35,24 @@ function toggleMode() {
     // Update button state
     toggleButton.setAttribute('data-mode', currentMode);
     
+    // Update theme
+    document.body.setAttribute('data-theme', currentMode.toLowerCase());
+    
+    // Update bookmark buttons based on mode
+    const solButtons = ['BULLX', 'RAYDIUM', 'JUPITER'];
+    const abstractButtons = ['PUMP.EVM', 'DEFINED'];
+    
+    // Get all bookmark buttons
+    const bookmarkButtons = document.querySelectorAll('.bookmark-pair-button');
+    bookmarkButtons.forEach(button => {
+        const pair = button.getAttribute('data-pair');
+        if (currentMode === 'SOL') {
+            button.style.display = solButtons.includes(pair) ? 'inline-block' : 'none';
+        } else {
+            button.style.display = abstractButtons.includes(pair) ? 'inline-block' : 'none';
+        }
+    });
+    
     // Update the home pages based on current mode
     if (currentMode === 'SOL') {
         homePage = 'https://raydium.io/swap/?inputMint=6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN&outputMint=sol';
@@ -152,7 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     "JUPITER": [
       "https://jup.ag/"
-    ]
+    ],
+    "PUMP.EVM": ["https://www.abstract.pumpevm.com/"],
+    "DEFINED": ["https://www.defined.fi/"]
   };
 
   // Tabs => { iframe, tabElement, url, isMaximized }
